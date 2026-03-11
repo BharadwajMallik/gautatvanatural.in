@@ -229,7 +229,6 @@
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(45,75,61,0.1); }
         .product-image {
             width: 100%;
-            aspect-ratio: 4/3;
             background: linear-gradient(135deg, #E9E3D5 0%, #f5f1e8 100%);
             display: flex;
             flex-direction: column;
@@ -240,8 +239,17 @@
             font-size: 0.9rem;
             gap: 8px;
             overflow: hidden;
+            min-height: 280px;
         }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            max-height: 320px;
+            padding: 8px;
+        }
         .product-image .img-placeholder { font-size: 3rem; }
         .product-badge {
             display: inline-block;
@@ -525,6 +533,53 @@
         }
         @keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
+        /* ========== PRODUCT DETAIL MODAL ========== */
+        .product-modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            align-items: start;
+        }
+        .product-modal-image {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #E9E3D5, #f5f1e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 260px;
+        }
+        .product-modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 300px;
+            padding: 8px;
+        }
+        .product-modal-details { display: flex; flex-direction: column; gap: 1rem; }
+        .product-modal-badge {
+            display: inline-block;
+            background: #2D4B3D;
+            color: white;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 50px;
+            width: fit-content;
+        }
+        .product-modal-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #2D4B3D; }
+        .product-modal-price { font-size: 1.4rem; font-weight: 600; color: #2D4B3D; }
+        .product-modal-desc { color: #666; font-size: 0.95rem; line-height: 1.8; }
+        .product-modal-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .product-modal-features li { font-size: 0.9rem; color: #555; }
+        .product-modal-features li::before { content: '✓ '; color: #2D4B3D; font-weight: 600; }
+        @media (max-width: 600px) {
+            .product-modal-body { grid-template-columns: 1fr; }
+        }
+
         /* ========== POLICY MODALS ========== */
         .policy-body { font-size: 0.92rem; line-height: 1.7; color: #444; overflow-y: auto; max-height: 62vh; padding-right: 10px; }
         .policy-body h4 { color: #2D4B3D; margin-top: 1.2rem; margin-bottom: 0.4rem; }
@@ -566,7 +621,7 @@
     <header>
         <div class="header-container">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Gau Tatva Natural" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="logo.jpg" alt="Gau Tatva Natural" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <span class="logo-fallback" style="display:none;">🐄</span>
                 <span>Gau Tatva Natural</span>
             </a>
@@ -615,36 +670,36 @@
 
                 <!-- Product 1: Hair Oil -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="hair-oil.jpg" alt="Organic Hair Oil" onerror="this.style.display='none'">
-                        <span class="img-placeholder">🌿</span>
-                        <span>Product image coming soon</span>
+                    <div class="product-image" onclick="openProductModal('hair-oil')" style="cursor:zoom-in;">
+                        <img src="hair_oil.png" alt="Organic Hair Oil" onerror="this.style.display='none'">
+                        <!--<span class="img-placeholder">🌿</span>-->
+                         <!--<span>Product image coming soon</span>-->
                     </div>
                     <div class="product-info">
                         <span class="product-badge">Personal Care</span>
-                        <div class="product-name">Organic Hair Oil</div>
+                        <div class="product-name">Panchagavya Hair Oil</div>
                         <div class="product-desc">Nourishing hair oil formulated with Panchagavya and natural herbs for stronger, healthier hair.</div>
-                        <div class="product-price">₹[Price]</div>
-                        <div class="product-btn-container" id="btn-Organic Hair Oil">
-                            <button class="btn btn-primary product-btn" onclick="addToCart('Organic Hair Oil', 0)">Add to Cart</button>
+                        <div class="product-price">₹169/-</div>
+                        <div class="product-btn-container" id="btn-Panchagavya Hair Oil">
+                            <button class="btn btn-primary product-btn" onclick="addToCart('Panchagavya Hair Oil', 169)">Add to Cart</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Product 2: Floor Cleaner -->
                 <div class="product-card">
-                    <div class="product-image">
+                    <div class="product-image" onclick="openProductModal('floor-cleaner')" style="cursor:zoom-in;">
                         <img src="floor-cleaner.jpg" alt="Organic Floor Cleaner" onerror="this.style.display='none'">
-                        <span class="img-placeholder">🏡</span>
-                        <span>Product image coming soon</span>
+                        <!--<span class="img-placeholder">🌿</span>-->
+                         <!--<span>Product image coming soon</span>-->
                     </div>
                     <div class="product-info">
                         <span class="product-badge">Home Care</span>
-                        <div class="product-name">Organic Floor Cleaner</div>
-                        <div class="product-desc">A powerful, eco-friendly floor cleaner made with natural Gomutra extracts — safe for homes with children and pets.</div>
-                        <div class="product-price">₹[Price]</div>
-                        <div class="product-btn-container" id="btn-Organic Floor Cleaner">
-                            <button class="btn btn-primary product-btn" onclick="addToCart('Organic Floor Cleaner', 0)">Add to Cart</button>
+                        <div class="product-name">Herbal Floor Cleaner</div>
+                        <div class="product-desc">A powerful, eco-friendly floor cleaner made with natural Gomutra extracts and Neem Oil — safe for homes with children and pets.</div>
+                        <div class="product-price">₹100/-</div>
+                        <div class="product-btn-container" id="btn-Herbal Floor Cleaner">
+                            <button class="btn btn-primary product-btn" onclick="addToCart('Herbal Floor Cleaner', 100)">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -709,18 +764,6 @@
             </div>
         </div>
 
-        <!-- Certificate Modal trigger is inside trust section -->
-        <div class="modal" id="certificateModal">
-            <div class="modal-content" style="max-width: 800px; text-align: center;">
-                <button class="modal-close" onclick="closeModal('certificate')">&times;</button>
-                <h2 style="margin-bottom: 1.5rem;">Professional Certification</h2>
-                <div style="overflow-y: auto; max-height: 70vh;">
-                    <img src="certificate.jpg" alt="Official MGIRI Certificate" style="width: 100%; border: 1px solid #E9E3D5; border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <p style="display:none; padding: 3rem; color: #999; font-style: italic;">Certificate image (certificate.jpg) will appear here once uploaded to GitHub.</p>
-                </div>
-                <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #666;">Verified training in bio-processing and organic product formulation.</p>
-            </div>
-        </div>
     </section>
 
     <!-- ===== MINI CART ===== -->
@@ -751,7 +794,7 @@
             <div class="footer-section">
                 <h3>Customer Support</h3>
                 <p>For queries, complaints, and feedback:</p>
-                <a href="mailto:gautatvanatural@gmail.com">gautatvanatural@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#0661677372677270676867727374676a46616b676f6a2865696b"><span class="__cf_email__" data-cfemail="0b6c6a7e7f6a7f7d6a656a7f7e796a674b6c666a626725686466">[email&#160;protected]</span></a>
                 <a href="tel:+919490630614">+91-9490630614</a>
                 <a href="https://wa.me/919490630614" target="_blank" rel="noopener">Chat on WhatsApp</a>
             </div>
@@ -762,7 +805,7 @@
             </div>
             <div class="footer-section">
                 <h3>Gau Tatva Natural</h3>
-                <p>SDS Residency, Madhavi Nagar,<br>Hyderabad – 500072</p>
+                <p>SDS Residency, Kukatpally,<br>Hyderabad – 500072</p>
                 <p style="margin-top:0.5rem;">Grievance Officer: Bharadwaj Mallik</p>
             </div>
         </div>
@@ -777,6 +820,39 @@
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
     </a>
+
+    <!-- ===== CERTIFICATE MODAL ===== -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content" style="max-width: 800px; text-align: center;">
+            <button class="modal-close" onclick="closeModal('certificate')">&times;</button>
+            <h2 style="margin-bottom: 1.5rem;">Professional Certification</h2>
+            <div style="overflow-y: auto; max-height: 70vh;">
+                <img src="certificate.jpg" alt="Official MGIRI Certificate" style="width: 100%; border: 1px solid #E9E3D5; border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <p style="display:none; padding: 3rem; color: #999; font-style: italic;">Certificate image (certificate.jpg) will appear here once uploaded to GitHub.</p>
+            </div>
+            <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #666;">Verified training in bio-processing and organic product formulation.</p>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT DETAIL MODAL ===== -->
+    <div class="modal" id="productModal">
+        <div class="modal-content" style="max-width:750px;">
+            <button class="modal-close" onclick="closeModal('product')">&times;</button>
+            <div class="product-modal-body">
+                <div class="product-modal-image">
+                    <img id="productModalImage" src="" alt="">
+                </div>
+                <div class="product-modal-details">
+                    <span class="product-modal-badge" id="productModalBadge"></span>
+                    <div class="product-modal-name" id="productModalName"></div>
+                    <div class="product-modal-price" id="productModalPrice"></div>
+                    <div class="product-modal-desc" id="productModalDesc"></div>
+                    <ul class="product-modal-features" id="productModalFeatures"></ul>
+                    <div id="productModalBtn" style="margin-top:0.5rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== CHECKOUT MODAL ===== -->
     <div class="modal" id="checkoutModal">
@@ -830,7 +906,7 @@
                 <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time by messaging us.</p>
                 <h4>4. Grievance Redressal</h4>
                 <p><strong>For Complaints and Feedback contact:</strong><br>
-                Email: <a href="mailto:gautatvanatural@gmail.com">gautatvanatural@gmail.com</a><br>
+                Email: <a href="/cdn-cgi/l/email-protection#6106001415001517000f00151413000d21060c00080d4f020e0c"><span class="__cf_email__" data-cfemail="d7b0b6a2a3b6a3a1b6b9b6a3a2a5b6bb97b0bab6bebbf9b4b8ba">[email&#160;protected]</span></a><br>
                 Phone: +91-9490630614<br>
                 We acknowledge complaints within 48 hours and resolve them within 30 days.</p>
             </div>
@@ -852,7 +928,7 @@
                 </p>
                 <h4>3. Damaged or Incorrect Orders</h4>
                 <p>If you receive a damaged or incorrect product, please notify us within <strong>48 hours</strong> of delivery.<br>
-                • Contact: WhatsApp +91-9490630614 or Email <a href="mailto:gautatvanatural@gmail.com">gautatvanatural@gmail.com</a><br>
+                • Contact: WhatsApp +91-9490630614 or Email <a href="/cdn-cgi/l/email-protection#cfa8aebabbaebbb9aea1aebbbabdaea38fa8a2aea6a3e1aca0a2"><span class="__cf_email__" data-cfemail="90f7f1e5e4f1e4e6f1fef1e4e5e2f1fcd0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a><br>
                 • Provide: Order ID and the Unboxing Video.</p>
                 <h4>4. Refund Timeline</h4>
                 <p>Once your claim is verified, a refund will be initiated to your original payment method (UPI/Bank) within <strong>5 to 7 business days</strong>. Shipping charges are non-refundable.</p>
@@ -862,7 +938,7 @@
                 <h4>Grievance Redressal (Legal Disclosure)</h4>
                 <p style="font-size:0.85rem;">In compliance with the Consumer Protection (E-Commerce) Rules, 2020:<br>
                 <strong>Grievance Officer:</strong> Bharadwaj Mallik<br>
-                <strong>Email:</strong> <a href="mailto:gautatvanatural@gmail.com">gautatvanatural@gmail.com</a><br>
+                <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#e582849091849193848b849190978489a58288848c89cb868a88"><span class="__cf_email__" data-cfemail="98fff9edecf9eceef9f6f9ecedeaf9f4d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</span></a><br>
                 <strong>Address:</strong> SDS Residency, Madhavi Nagar, Hyderabad 500072<br>
                 <em>We acknowledge complaints within 48 hours and resolve them within 30 days.</em></p>
             </div>
@@ -873,9 +949,59 @@
     <script>
         // ---- PRODUCTS (update name, price here when ready) ----
         const PRODUCTS = [
-            { id: 'Organic Hair Oil',      price: 0, label: 'Organic Hair Oil' },
-            { id: 'Organic Floor Cleaner', price: 0, label: 'Organic Floor Cleaner' }
+            { id: 'Panchagavya Hair Oil', price: 169, label: 'Panchagavya Hair Oil' },
+            { id: 'Herbal Floor Cleaner', price: 100, label: 'Herbal Floor Cleaner' }
         ];
+
+        // ---- PRODUCT DETAIL DATA ----
+        const PRODUCT_DETAILS = {
+            'hair-oil': {
+                name: 'Panchagavya Hair Oil',
+                badge: 'Personal Care',
+                price: '₹169/-',
+                image: 'hair_oil.png',
+                desc: 'Nourishing hair oil formulated with Panchagavya and natural herbs for stronger, healthier hair.',
+                features: [
+                    '100% natural ingredients',
+                    'Panchagavya-based formula',
+                    'Strengthens hair roots',
+                    'No harmful chemicals',
+                    'Safe for all hair types'
+                ],
+                cartId: 'Panchagavya Hair Oil',
+                cartPrice: 169
+            },
+            'floor-cleaner': {
+                name: 'Herbal Floor Cleaner',
+                badge: 'Home Care',
+                price: '₹100/-',
+                image: 'floor-cleaner.jpg',
+                desc: 'A powerful, eco-friendly floor cleaner made with natural Gomutra extracts and Neem Oil — safe for homes with children and pets.',
+                features: [
+                    'Made with Gomutra extracts',
+                    'Eco-friendly formula',
+                    'Safe for children & pets',
+                    'No toxic chemicals',
+                    'Pleasant natural fragrance'
+                ],
+                cartId: 'Herbal Floor Cleaner',
+                cartPrice: 100
+            }
+        };
+
+        function openProductModal(productKey) {
+            const p = PRODUCT_DETAILS[productKey];
+            if (!p) return;
+            document.getElementById('productModalImage').src = p.image;
+            document.getElementById('productModalImage').alt = p.name;
+            document.getElementById('productModalBadge').textContent = p.badge;
+            document.getElementById('productModalName').textContent = p.name;
+            document.getElementById('productModalPrice').textContent = p.price;
+            document.getElementById('productModalDesc').textContent = p.desc;
+            document.getElementById('productModalFeatures').innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
+            document.getElementById('productModalBtn').innerHTML = `<button class="btn btn-primary" style="width:100%;" onclick="addToCart('${p.cartId}', ${p.cartPrice}); closeModal('product'); showToast('Added to cart ✓')">Add to Cart</button>`;
+            openModal('product');
+        }
 
         const BUSINESS_PHONE = '919490630614';
         let cart = JSON.parse(localStorage.getItem('gautatva_cart') || '[]');
@@ -903,7 +1029,7 @@
                 cartItems.innerHTML = cart.map((item, idx) => `
                     <div class="cart-item">
                         <div><b style="color:#2D4B3D;font-size:0.95rem;">${item.name}</b><br>
-                        <span style="font-size:0.85rem;color:#888;">${item.price > 0 ? '₹' + item.price : 'Price TBD'}</span></div>
+                        <span style="font-size:0.85rem;color:#888;">₹${item.price} each</span></div>
                         <div style="display:flex;align-items:center;gap:6px;">
                             <button class="qty-btn" onclick="updateQty(${idx}, -1)">−</button>
                             <span style="min-width:20px;text-align:center;font-weight:600;">${item.qty}</span>
@@ -913,8 +1039,8 @@
                     </div>`).join('');
             }
 
-            subtotal.textContent  = totalPrice > 0 ? '₹' + totalPrice : 'TBD';
-            cartTotal.textContent = totalPrice > 0 ? '₹' + totalPrice : 'TBD';
+            subtotal.textContent  = '₹' + totalPrice;
+            cartTotal.textContent = '₹' + totalPrice;
             localStorage.setItem('gautatva_cart', JSON.stringify(cart));
             updateProductButtons();
         }
@@ -1023,11 +1149,11 @@
             if (!validateForm()) return;
             let msg = `🛍️ *Order — Gau Tatva Natural*\n\n`;
             cart.forEach(i => {
-                const lineTotal = i.price > 0 ? `₹${i.price * i.qty}` : 'Price TBD';
+                const lineTotal = `₹${i.price * i.qty}`;
                 msg += `• ${i.name} x${i.qty} = ${lineTotal}\n`;
             });
             const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
-            msg += `\n*Total:* ${total > 0 ? '₹' + total : 'TBD'}\n`;
+            msg += `\n*Total:* ₹${total}\n`;
             msg += `\n*Delivery Address:*\n`;
             msg += `${document.getElementById('fullName').value}\n`;
             msg += `${document.getElementById('street').value}\n`;
@@ -1039,7 +1165,7 @@
         // ---- INPUT FILTERS ----
         document.addEventListener('DOMContentLoaded', () => {
             const onlyLetters = (id) => {
-                const el = document.getElementById(id);
+              const el = document.getElementById(id);
                 if (el) el.addEventListener('input', () => { el.value = el.value.replace(/[^A-Za-z\s]/g, ''); });
             };
             const onlyDigits = (id, max) => {
