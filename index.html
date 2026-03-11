@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gau Tatva Natural - Premium Organic Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== RESET & BASE STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCF9;
+            color: #333333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: #2D4B3D;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555555;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #2D4B3D;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1f3428;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(45, 75, 61, 0.15);
+        }
+
+        .btn-secondary {
+            border: 2px solid #2D4B3D;
+            color: #2D4B3D;
+            background-color: transparent;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2D4B3D;
+            color: white;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(253, 252, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E9E3D5;
+            padding: 1.5rem 2rem;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2D4B3D;
+            letter-spacing: -1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #333333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2D4B3D;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #2D4B3D;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            padding: 8rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1.5rem;
+            color: #2D4B3D;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #666666;
+            line-height: 1.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ========== PRODUCT GRID ========== */
+        .products {
+            padding: 6rem 2rem;
+            background-color: white;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.05rem;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: #FDFCF9;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(45, 75, 61, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #E9E3D5 0%, #f5f1e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+            font-style: italic;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #2D4B3D;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: #2D4B3D;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-qty-control {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .qty-btn-product {
+            background: #E9E3D5;
+            border: none;
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2D4B3D;
+        }
+
+        .qty-display-product {
+            flex: 1;
+            text-align: center;
+            font-weight: 600;
+            color: #2D4B3D;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #FDFCF9 0%, white 100%);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: #2D4B3D;
+            color: #E9E3D5;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #E9E3D5;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #E9E3D5;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(233, 227, 213, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* ========== CART ICON & MINI CART ========== */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #E9E3D5;
+            color: #2D4B3D;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .cart-badge.active {
+            display: flex;
+        }
+
+        .mini-cart {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            width: 380px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(45, 75, 61, 0.15);
+            z-index: 99;
+            max-height: 600px;
+            overflow-y: auto;
+            display: none;
+            flex-direction: column;
+        }
+
+        .mini-cart.active {
+            display: flex;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #E9E3D5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2D4B3D;
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #E9E3D5;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: #2D4B3D;
+        }
+
+        .qty-btn {
+            background: #E9E3D5;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-summary {
+            padding: 1.5rem;
+            border-top: 1px solid #E9E3D5;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #E9E3D5;
+            padding-top: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2D4B3D;
+        }
+
+        .cart-actions {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #E9E3D5;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* ========== CHECKOUT MODAL ========== */
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #2D4B3D;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input {
+            padding: 0.75rem;
+            border: 1px solid #E9E3D5;
+            border-radius: 6px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(51, 51, 51, 0.5);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #FDFCF9;
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 550px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #2D4B3D;
+            cursor: pointer;
+        }
+
+        /* ========== TOAST ========== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #2D4B3D;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            z-index: 1001;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .header-container { flex-direction: column; }
+            nav { display: none; }
+            .footer-container { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+			<img src="logo.png" alt="" style="height: 45px; width: auto;">
+			<span>Gau Tatva Natural</span>
+		</div>
+                <nav id="mainNav">
+                    <a href="#shop">Shop</a>
+                    <a href="#story">Our Story</a>
+                    <a href="#support">Support</a>
+                </nav>
+                <div class="cart-icon" id="cartIcon" onclick="toggleMiniCart()">
+                    🛒 <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="shop">
+        <div class="hero-content">
+            <h1>Nature, bottled with intent</h1>
+            <p>Discover our curated collection of pure, organic products sourced directly from sustainable farms. Each product is crafted with care, preserving nature's goodness for you.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">View Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="products-container">
+            <div class="section-title">
+                <h2>Our Collection</h2>
+                <p>Handpicked organic essentials for your wellness journey</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">Face Oil</div>
+                    <div class="product-info">
+                        <div class="product-name">Organic Turmeric Powder</div>
+                        <div class="product-price">₹399</div>
+                        <div class="product-btn-container" id="btn-Organic Turmeric Powder"><button class="btn btn-primary product-btn" onclick="addToCart('Organic Turmeric Powder', 399)">Add to Cart</button></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">Coconut Oil</div>
+                    <div class="product-info">
+                        <div class="product-name">Cold-Pressed Coconut Oil</div>
+                        <div class="product-price">₹599</div>
+                        <div class="product-btn-container" id="btn-Cold-Pressed Coconut Oil"><button class="btn btn-primary product-btn" onclick="addToCart('Cold-Pressed Coconut Oil', 599)">Add to Cart</button></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">Honey</div>
+                    <div class="product-info">
+                        <div class="product-name">Raw Honey from Himalayas</div>
+                        <div class="product-price">₹699</div>
+                        <div class="product-btn-container" id="btn-Raw Honey from Himalayas"><button class="btn btn-primary product-btn" onclick="addToCart('Raw Honey from Himalayas', 699)">Add to Cart</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="story">
+        <div class="about-container">
+            <h3 style="margin-bottom: 1.5rem;">What is Panchagavya?</h3>
+            <p>Panchagavya is a traditional Ayurvedic formulation prepared from five sacred elements of indigenous cows — milk, curd, ghee, gomutra, and cow dung.</p>
+        </div>
+    </section>
+	<section class="trust" id="trust" style="padding: 6rem 2rem; background-color: #F4F1EA;">
+    <div class="about-container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+        <h2 style="margin-bottom: 1.5rem;">Why Trust Our Products?</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; text-align: left;">
+            <div>
+                <h3 style="color: #2D4B3D; margin-bottom: 1rem;">Scientifically Formulated</h3>
+                <p style="margin-bottom: 1.5rem;">Our products are prepared by a lead specialist personally trained by the professional bio-processing team at <strong>MGIRI Wardha</strong> (Ministry of MSME, Govt. of India).</p>
+                <p>This certification ensures that every product follows strict quality protocols, preserving the natural nutrients while maintaining clinical-grade hygiene standards.</p>
+                <button class="btn btn-secondary" style="margin-top: 1.5rem;" onclick="openModal('certificate')">View MGIRI Certification</button>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <div style="width: 100%; aspect-ratio: 16/9; background: #E9E3D5; display: flex; align-items: center; justify-content: center; color: #999; border-radius: 8px;">
+                    Training Gallery Image
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="modal" id="certificateModal">
+    <div class="modal-content" style="max-width: 800px; text-align: center;">
+        <button class="modal-close" onclick="closeModal('certificate')">&times;</button>
+        <h2 style="margin-bottom: 1.5rem;">Professional Certification</h2>
+        <div style="overflow-y: auto; max-height: 70vh;">
+            <img src="certificate.jpg" alt="Official MGIRI Certificate" style="width: 100%; border: 1px solid #E9E3D5; border-radius: 4px;">
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">Verified training in bio-processing and organic product formulation.</p>
+    </div>
+</div>
+</section>
+
+    <div class="mini-cart" id="miniCart">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="cart-close" onclick="toggleMiniCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-summary">
+            <div class="summary-row"><span>Subtotal:</span><span id="subtotal">₹0</span></div>
+            <div class="summary-row"><span>Shipping:</span><span id="shipping" style="font-size: 0.8rem; font-style: italic;">Calculated on WhatsApp</span></div>
+            <div class="summary-row total"><span>Total:</span><span id="cartTotal">₹0</span></div>
+        </div>
+        <div class="cart-actions">
+            <button class="btn btn-primary" style="width: 100%;" onclick="openCheckout()">Checkout</button>
+        </div>
+    </div>
+
+    <footer id="support">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Customer Support</h3>
+                <p><strong>For Complaints and Feedback contact:</strong></p>
+                <p>Email: gautatvanaturals@zohomail.in</p>
+                <p>Phone: +91-9490630614</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#" onclick="openModal('privacy'); return false;">Privacy Policy</a><br><br>
+                <a href="#" onclick="openModal('returns'); return false;">Returns & Refunds</a>
+            </div>
+            <div class="footer-section">
+                <h3>Gau Tatva Natural</h3>
+                <p>© 2026 Gau Tatva Natural. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('checkout')">&times;</button>
+            <h2>Complete Your Order</h2>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" required pattern="[A-Za-z\s]+" title="Letters and spaces only"></div>
+                <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" required pattern="[0-9]{10}" title="10 digit number only"></div>
+                <div class="form-group"><label>Street Address *</label><input type="text" id="street" required pattern="[A-Za-z0-9\s,\.\-]+" title="Letters, numbers, commas, periods, hyphens and spaces only"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>City *</label><input type="text" id="city" required pattern="[A-Za-z\s]+" title="Letters and spaces only"></div>
+                    <div class="form-group"><label>PIN Code *</label><input type="text" id="pincode" required pattern="[0-9]{6}"></div>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">Note: Shipping charges will be calculated and added during our WhatsApp conversation.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+                    <button type="button" class="btn btn-primary" style="padding: 18px;" onclick="handleWhatsAppDirect()">Confirm Order on WhatsApp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="privacyModal">
+    <div class="modal-content" style="max-width: 700px; text-align: left;">
+        <button class="modal-close" onclick="closeModal('privacy')">&times;</button>
+        <h2 style="margin-bottom: 1rem;">Privacy Policy</h2>
+        <div style="font-size: 0.9rem; line-height: 1.6; color: #444; overflow-y: auto; max-height: 60vh; padding-right: 10px;">
+            <p><strong>Effective Date:</strong> March 07, 2026</p>
+            <p>Gau Tatva Natural is committed to protecting your privacy under the DPDP Act, 2023.</p>
+            
+            <h4 style="margin-top: 1rem; color: #2D4B3D;">1. Data Collection</h4>
+            <p>We collect your Name, Phone Number, and Address solely for order fulfillment and shipping calculation via WhatsApp.</p>
+            
+            <h4 style="margin-top: 1rem; color: #2D4B3D;">2. Use of Data</h4>
+            <p>Your data is used to calculate shipping and communicate order status. We do not sell your data to third parties.</p>
+            
+            <h4 style="margin-top: 1rem; color: #2D4B3D;">3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time by messaging us.</p>
+            
+            <h4 style="margin-top: 1rem; color: #2D4B3D;">4. Grievance Redressal</h4>
+            <p><strong>For Complaints and Feedback contact:</strong><br>
+            Email: gautatvanaturals@zohomail.in<br>
+            Phone: +91-9490630614<br>
+            We acknowledge complaints within 48 hours and resolve them within 30 days.</p>
+        </div>
+    </div>
+</div>
+    <div class="modal" id="returnsModal">
+    <div class="modal-content" style="max-width: 750px; text-align: left; padding: 40px;">
+        <button class="modal-close" onclick="closeModal('returns')">&times;</button>
+        
+        <h2 style="margin-bottom: 1.5rem; border-bottom: 2px solid #2D4B3D; padding-bottom: 10px;">Returns & Refund Policy</h2>
+        
+        <div style="font-size: 0.95rem; line-height: 1.6; color: #444; overflow-y: auto; max-height: 65vh; padding-right: 15px;">
+            <p style="margin-bottom: 15px;">Thank you for shopping at <strong>Gau Tatva Natural</strong>. To ensure the highest hygiene standards for our artisanal organic products, we maintain the following policy:</p>
+
+            <h4 style="color: #2D4B3D; margin-top: 20px;">1. Non-Returnable Categories</h4>
+            <p>Due to the nature of our products—including Personal Care (Hair Oils), and Home Care (Floor Cleaners)—we cannot accept returns once the product has been delivered and the safety seal is broken. This policy is in place to prevent cross-contamination and ensure the hygiene and safety of all our customers., we <strong>cannot accept returns</strong> once the product has been delivered and the safety seal is broken, except in cases of damage or error on our part.</p>
+
+            <h4 style="color: #2D4B3D; margin-top: 20px;">2. Mandatory Unboxing Video Requirement</h4>
+            <p style="background: #fdf5e6; padding: 10px; border-radius: 5px; border-left: 4px solid #8B4513;">
+                <strong>Important:</strong> To claim a refund or replacement for damaged or missing items, a 360-degree <strong>continuous unboxing video</strong> is mandatory. The video must show the shipping label and the sealed package being opened for the first time without any cuts or edits.
+            </p>
+
+            <h4 style="color: #2D4B3D; margin-top: 20px;">3. Damaged or Incorrect Orders</h4>
+            <p>If you receive a damaged or incorrect product, please notify us within <strong>48 hours</strong> of delivery.
+            <br>• Contact: WhatsApp +91-9490630614 or Email gautatvanaturals@zohomail.in
+            <br>• Provide: Order ID and the Unboxing Video.</p>
+
+            <h4 style="color: #2D4B3D; margin-top: 20px;">4. Refund Timeline</h4>
+            <p>Once your claim is verified, a refund will be initiated to your original payment method (UPI/Bank) within <strong>5 to 7 business days</strong>. Please note that shipping charges are non-refundable.</p>
+
+            <h4 style="color: #2D4B3D; margin-top: 20px;">5. Cancellations</h4>
+            <p>Orders can only be cancelled before they are dispatched. Once an order is handed over to our courier partner, it cannot be cancelled or recalled.</p>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+            <h4 style="color: #2D4B3D;">Grievance Redressal (Legal Disclosure)</h4>
+            <p style="font-size: 0.85rem;">In compliance with the Consumer Protection (E-Commerce) Rules, 2020:
+            <br><strong>Grievance Officer:</strong> Bharadwaj Mallik
+            <br><strong>Email:</strong> gautatvanaturals@zohomail.in
+            <br><strong>Address:</strong> SDS Residency,Madhavi Nagar,Hyderabad 500072
+            <br><em>We acknowledge complaints within 48 hours and resolve them within 30 days.</em></p>
+        </div>
+    </div>
+</div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const BUSINESS_PHONE = '919490630614';
+        const UPI_ID = '9490630614@upi';
+
+        function updateCartUI() {
+            const cartBadge = document.getElementById('cartBadge');
+            const cartItems = document.getElementById('cartItems');
+            const subtotal = document.getElementById('subtotal');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            cartBadge.textContent = totalQty;
+            cartBadge.style.display = totalQty > 0 ? 'flex' : 'none';
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div style="text-align:center; padding: 2rem;">Empty</div>';
+            } else {
+                cartItems.innerHTML = cart.map((item, idx) => `
+                    <div class="cart-item">
+                        <div><b>${item.name}</b><br>₹${item.price}</div>
+                        <div>
+                            <button class="qty-btn" onclick="updateQty(${idx}, -1)">−</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="updateQty(${idx}, 1)">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${idx})">×</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            subtotal.textContent = '₹' + totalPrice;
+            cartTotal.textContent = '₹' + totalPrice;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateProductButtons();
+        }
+
+        function updateProductButtons() {
+            const products = [
+                { name: 'Organic Turmeric Powder', price: 399 },
+                { name: 'Cold-Pressed Coconut Oil', price: 599 },
+                { name: 'Raw Honey from Himalayas', price: 699 }
+            ];
+
+            products.forEach(p => {
+                const container = document.getElementById(`btn-${p.name}`);
+                if (!container) return;
+
+                const cartItem = cart.find(item => item.name === p.name);
+
+                if (cartItem) {
+                    // Show plus/minus if item is in the cart
+                    container.innerHTML = `<div class="product-qty-control"><button class="qty-btn-product" onclick="addToCart('${p.name}', ${p.price}, -1)">−</button><span class="qty-display-product">${cartItem.qty}</span><button class="qty-btn-product" onclick="addToCart('${p.name}', ${p.price}, 1)">+</button></div>`;
+                } else {
+                    // Reset to standard Add to Cart button if item was removed
+                    container.innerHTML = `<button class="btn btn-primary product-btn" onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>`;
+                }
+            });
+        }
+
+        function addToCart(name, price, change = 1) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+            } else if (change > 0) {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            if (change > 0) showToast("Added to cart");
+        }
+
+        function updateQty(idx, change) {
+            cart[idx].qty += change;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateCartUI();
+        }
+
+        function removeFromCart(idx) { cart.splice(idx, 1); updateCartUI(); }
+        function toggleMiniCart() { document.getElementById('miniCart').classList.toggle('active'); }
+        function openCheckout() { if (cart.length === 0) return alert('Cart empty'); toggleMiniCart(); openModal('checkout'); }
+        function openModal(type) { document.getElementById(type + 'Modal').classList.add('active'); }
+        function closeModal(type) { document.getElementById(type + 'Modal').classList.remove('active'); }
+        function showToast(msg) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+
+        function validateForm() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const street = document.getElementById('street').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const pincode = document.getElementById('pincode').value.trim();
+
+            if (!fullName || !phone || !street || !city || !pincode) {
+                return false;
+            }
+
+            const nameRegex = /^[A-Za-z\s]+$/;
+            const phoneRegex = /^[0-9]{10}$/;
+            const pincodeRegex = /^[0-9]{6}$/;
+            const addressRegex = /^[A-Za-z0-9\s,\.\-]+$/;
+            const cityRegex = /^[A-Za-z\s]+$/;
+
+            if (!nameRegex.test(fullName)) {
+                alert('Full name should contain only letters and spaces.');
+                return false;
+            }
+            if (!phoneRegex.test(phone)) {
+                alert('Phone number must be 10 digits and contain only numbers.');
+                return false;
+            }
+            if (!addressRegex.test(street)) {
+                alert('Street address contains invalid characters.');
+                return false;
+            }
+            if (!cityRegex.test(city)) {
+                alert('City should contain only letters and spaces.');
+                return false;
+            }
+            if (!pincodeRegex.test(pincode)) {
+                alert('PIN code must be 6 digits and contain only numbers.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function handleUPIDirect() {
+            if (!validateForm()) return alert('Please fill all fields');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            window.location.href = `upi://pay?pa=${UPI_ID}&pn=GauTatvaNatural&am=${total}&cu=INR`;
+        }
+
+        function handleWhatsAppDirect() {
+            if (!validateForm()) return alert('Please fill all fields');
+            let msg = `🛍️ *Order for Gau Tatva Natural*\n\n`;
+            cart.forEach(i => msg += `• ${i.name} x${i.qty} = ₹${i.price * i.qty}\n`);
+            msg += `\n*Subtotal:* ₹${cart.reduce((s, i) => s + (i.price * i.qty), 0)}\n`;
+            msg += `\n*Address:*\n${document.getElementById('fullName').value}\n${document.getElementById('street').value}\n${document.getElementById('city').value} - ${document.getElementById('pincode').value}\nPh: ${document.getElementById('phone').value}`;
+            window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        updateCartUI();
+
+        // realtime input filtering to prevent invalid characters
+        document.addEventListener('DOMContentLoaded', () => {
+            const phone = document.getElementById('phone');
+            const fullName = document.getElementById('fullName');
+            const city = document.getElementById('city');
+            const state = document.getElementById('state');
+            const street = document.getElementById('street');
+
+            if (phone) phone.addEventListener('input', e => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+            [fullName, city, state].forEach(el => {
+                if (el) el.addEventListener('input', e => {
+                    e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+                });
+            });
+            if (street) street.addEventListener('input', e => {
+                e.target.value = e.target.value.replace(/[^A-Za-z0-9\s,\.\-]/g, '');
+            });
+        });
+    </script>
+</body>
+</html>
