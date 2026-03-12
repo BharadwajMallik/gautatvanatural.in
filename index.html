@@ -243,12 +243,10 @@
         }
         .product-image img {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
+            height: 320px;
+            object-fit: cover;
+            object-position: center 20%;
             display: block;
-            max-height: 320px;
-            padding: 8px;
         }
         .product-image .img-placeholder { font-size: 3rem; }
         .product-badge {
@@ -697,9 +695,9 @@
                         <span class="product-badge">Home Care</span>
                         <div class="product-name">Herbal Floor Cleaner</div>
                         <div class="product-desc">A powerful, eco-friendly floor cleaner made with natural Gomutra extracts and Neem Oil — safe for homes with children and pets.</div>
-                        <div class="product-price">₹100/-</div>
+                        <div class="product-price">₹99/-</div>
                         <div class="product-btn-container" id="btn-Herbal Floor Cleaner">
-                            <button class="btn btn-primary product-btn" onclick="addToCart('Herbal Floor Cleaner', 100)">Add to Cart</button>
+                            <button class="btn btn-primary product-btn" onclick="addToCart('Herbal Floor Cleaner', 99)">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -794,7 +792,7 @@
             <div class="footer-section">
                 <h3>Customer Support</h3>
                 <p>For queries, complaints, and feedback:</p>
-                <a href="/cdn-cgi/l/email-protection#0661677372677270676867727374676a46616b676f6a2865696b"><span class="__cf_email__" data-cfemail="0b6c6a7e7f6a7f7d6a656a7f7e796a674b6c666a626725686466">[email&#160;protected]</span></a>
+                <a href="mailto:gautatvanaturals@zohomail.in">gautatvanaturals@zohomail.in</a>
                 <a href="tel:+919490630614">+91-9490630614</a>
                 <a href="https://wa.me/919490630614" target="_blank" rel="noopener">Chat on WhatsApp</a>
             </div>
@@ -906,7 +904,7 @@
                 <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time by messaging us.</p>
                 <h4>4. Grievance Redressal</h4>
                 <p><strong>For Complaints and Feedback contact:</strong><br>
-                Email: <a href="/cdn-cgi/l/email-protection#6106001415001517000f00151413000d21060c00080d4f020e0c"><span class="__cf_email__" data-cfemail="d7b0b6a2a3b6a3a1b6b9b6a3a2a5b6bb97b0bab6bebbf9b4b8ba">[email&#160;protected]</span></a><br>
+                Email: <a href="mailto:gautatvanaturals@zohomail.in">gautatvanaturals@zohomail.in</a><br>
                 Phone: +91-9490630614<br>
                 We acknowledge complaints within 48 hours and resolve them within 30 days.</p>
             </div>
@@ -928,7 +926,7 @@
                 </p>
                 <h4>3. Damaged or Incorrect Orders</h4>
                 <p>If you receive a damaged or incorrect product, please notify us within <strong>48 hours</strong> of delivery.<br>
-                • Contact: WhatsApp +91-9490630614 or Email <a href="/cdn-cgi/l/email-protection#cfa8aebabbaebbb9aea1aebbbabdaea38fa8a2aea6a3e1aca0a2"><span class="__cf_email__" data-cfemail="90f7f1e5e4f1e4e6f1fef1e4e5e2f1fcd0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a><br>
+                • Contact: WhatsApp +91-9490630614 or Email <a href="mailto:gautatvanaturals@zohomail.in">gautatvanaturals@zohomail.in</a><br>
                 • Provide: Order ID and the Unboxing Video.</p>
                 <h4>4. Refund Timeline</h4>
                 <p>Once your claim is verified, a refund will be initiated to your original payment method (UPI/Bank) within <strong>5 to 7 business days</strong>. Shipping charges are non-refundable.</p>
@@ -938,7 +936,7 @@
                 <h4>Grievance Redressal (Legal Disclosure)</h4>
                 <p style="font-size:0.85rem;">In compliance with the Consumer Protection (E-Commerce) Rules, 2020:<br>
                 <strong>Grievance Officer:</strong> Bharadwaj Mallik<br>
-                <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#e582849091849193848b849190978489a58288848c89cb868a88"><span class="__cf_email__" data-cfemail="98fff9edecf9eceef9f6f9ecedeaf9f4d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</span></a><br>
+                <strong>Email:</strong> <a href="mailto:gautatvanaturals@zohomail.in">gautatvanaturals@zohomail.in</a><br>
                 <strong>Address:</strong> SDS Residency, Madhavi Nagar, Hyderabad 500072<br>
                 <em>We acknowledge complaints within 48 hours and resolve them within 30 days.</em></p>
             </div>
@@ -950,7 +948,7 @@
         // ---- PRODUCTS (update name, price here when ready) ----
         const PRODUCTS = [
             { id: 'Panchagavya Hair Oil', price: 169, label: 'Panchagavya Hair Oil' },
-            { id: 'Herbal Floor Cleaner', price: 100, label: 'Herbal Floor Cleaner' }
+            { id: 'Herbal Floor Cleaner', price: 99, label: 'Herbal Floor Cleaner' }
         ];
 
         // ---- PRODUCT DETAIL DATA ----
@@ -985,7 +983,7 @@
                     'Pleasant natural fragrance'
                 ],
                 cartId: 'Herbal Floor Cleaner',
-                cartPrice: 100
+                cartPrice: 99
             }
         };
 
@@ -1160,6 +1158,27 @@
             msg += `${document.getElementById('city').value} – ${document.getElementById('pincode').value}\n`;
             msg += `Ph: ${document.getElementById('phone').value}`;
             window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+
+            // Clear cart
+            cart = [];
+            localStorage.removeItem('gtCart');
+            updateCartUI();
+
+            // Show thank you screen inside checkout modal
+            const modalBody = document.querySelector('#checkoutModal .modal-body');
+            modalBody.innerHTML = `
+                <div style="text-align:center; padding: 2rem 1rem;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎉</div>
+                    <h2 style="color: #2D4B3D; margin-bottom: 0.75rem;">Thank You for Your Order!</h2>
+                    <p style="color: #555; margin-bottom: 0.5rem;">Your order has been sent to us on WhatsApp.</p>
+                    <p style="color: #555; margin-bottom: 2rem;">We will confirm your order and share delivery details shortly. For any queries, feel free to message us on WhatsApp.</p>
+                    <div style="background: #f5f1e8; border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; text-align:left;">
+                        <p style="margin:0; font-size: 0.9rem; color: #2D4B3D;"><strong>What happens next?</strong></p>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: #555;">✅ We receive your order on WhatsApp<br>📦 We pack & dispatch within 1–2 business days<br>🚚 Delivery in 4–7 business days</p>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%; padding: 14px;" onclick="location.reload()">🛍️ Order More Products</button>
+                </div>
+            `;
         }
 
         // ---- INPUT FILTERS ----
