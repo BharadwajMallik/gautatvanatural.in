@@ -619,7 +619,7 @@
     <header>
         <div class="header-container">
             <a href="#" class="logo">
-                <img src="logo.jpg" alt="Gau Tatva Natural" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="logo.png" alt="Gau Tatva Natural" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <span class="logo-fallback" style="display:none;">🐄</span>
                 <span>Gau Tatva Natural</span>
             </a>
@@ -695,9 +695,9 @@
                         <span class="product-badge">Home Care</span>
                         <div class="product-name">Herbal Floor Cleaner</div>
                         <div class="product-desc">A powerful, eco-friendly floor cleaner made with natural Gomutra extracts and Neem Oil — safe for homes with children and pets.</div>
-                        <div class="product-price">₹99/-</div>
+                        <div class="product-price">₹100/-</div>
                         <div class="product-btn-container" id="btn-Herbal Floor Cleaner">
-                            <button class="btn btn-primary product-btn" onclick="addToCart('Herbal Floor Cleaner', 99)">Add to Cart</button>
+                            <button class="btn btn-primary product-btn" onclick="addToCart('Herbal Floor Cleaner', 100)">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -794,7 +794,7 @@
                 <p>For queries, complaints, and feedback:</p>
                 <a href="mailto:gautatvanaturals@zohomail.in">gautatvanaturals@zohomail.in</a>
                 <a href="tel:+919490630614">+91-9490630614</a>
-                <a href="https://wa.me/919490630614" target="_blank" rel="noopener">Chat on WhatsApp</a>
+                <a href="https://wa.me/919490630614?text=Hello%20Gau%20Tatva%20Natural!%20%F0%9F%91%8B%20I%20have%20a%20query%20about%20your%20products." target="_blank" rel="noopener">Chat on WhatsApp</a>
             </div>
             <div class="footer-section">
                 <h3>Legal</h3>
@@ -813,7 +813,7 @@
     </footer>
 
     <!-- ===== WHATSAPP FLOAT ===== -->
-    <a class="whatsapp-float" href="https://wa.me/919490630614" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+    <a class="whatsapp-float" href="https://wa.me/919490630614?text=Hello%20Gau%20Tatva%20Natural!%20%F0%9F%91%8B%20I%20am%20interested%20in%20your%20products.%20Could%20you%20please%20help%20me%3F" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -838,7 +838,14 @@
             <button class="modal-close" onclick="closeModal('product')">&times;</button>
             <div class="product-modal-body">
                 <div class="product-modal-image">
-                    <img id="productModalImage" src="" alt="">
+                    <div id="productModalGallery" style="position:relative; width:100%; height:100%;">
+                        <img id="productModalImage" src="" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+                        <!-- Prev/Next arrows -->
+                        <button id="galleryPrev" onclick="galleryNav(-1)" style="display:none;position:absolute;left:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1.1rem;cursor:pointer;z-index:10;">&#8249;</button>
+                        <button id="galleryNext" onclick="galleryNav(1)"  style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1.1rem;cursor:pointer;z-index:10;">&#8250;</button>
+                        <!-- Dots -->
+                        <div id="galleryDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"></div>
+                    </div>
                 </div>
                 <div class="product-modal-details">
                     <span class="product-modal-badge" id="productModalBadge"></span>
@@ -881,6 +888,7 @@
                     </div>
                 </div>
                 <p class="checkout-note">💬 Shipping charges will be calculated and shared during our WhatsApp conversation.</p>
+                <p id="savedAddressNote" style="display:none; font-size:0.85rem; color:#555; margin-bottom:0.75rem;"></p>
                 <button type="button" class="btn btn-primary" style="padding:16px; margin-top:0.5rem;" onclick="handleWhatsAppDirect()">
                     ✅ Confirm Order on WhatsApp
                 </button>
@@ -948,7 +956,7 @@
         // ---- PRODUCTS (update name, price here when ready) ----
         const PRODUCTS = [
             { id: 'Panchagavya Hair Oil', price: 169, label: 'Panchagavya Hair Oil' },
-            { id: 'Herbal Floor Cleaner', price: 99, label: 'Herbal Floor Cleaner' }
+            { id: 'Herbal Floor Cleaner', price: 100, label: 'Herbal Floor Cleaner' }
         ];
 
         // ---- PRODUCT DETAIL DATA ----
@@ -958,6 +966,7 @@
                 badge: 'Personal Care',
                 price: '₹169/-',
                 image: 'hair_oil.png',
+                images: ['hair_oil.png', 'hair_oil_2.png', 'hair_oil_3.png'],
                 desc: 'Nourishing hair oil formulated with Panchagavya and natural herbs for stronger, healthier hair.',
                 features: [
                     '100% natural ingredients',
@@ -974,6 +983,7 @@
                 badge: 'Home Care',
                 price: '₹100/-',
                 image: 'floor-cleaner.jpg',
+                images: ['floor-cleaner.jpg', 'floor_cleaner_2.jpg'],
                 desc: 'A powerful, eco-friendly floor cleaner made with natural Gomutra extracts and Neem Oil — safe for homes with children and pets.',
                 features: [
                     'Made with Gomutra extracts',
@@ -983,26 +993,69 @@
                     'Pleasant natural fragrance'
                 ],
                 cartId: 'Herbal Floor Cleaner',
-                cartPrice: 99
+                cartPrice: 100
             }
         };
+
+        let _galleryImages = [];
+        let _galleryIndex  = 0;
 
         function openProductModal(productKey) {
             const p = PRODUCT_DETAILS[productKey];
             if (!p) return;
-            document.getElementById('productModalImage').src = p.image;
-            document.getElementById('productModalImage').alt = p.name;
-            document.getElementById('productModalBadge').textContent = p.badge;
-            document.getElementById('productModalName').textContent = p.name;
-            document.getElementById('productModalPrice').textContent = p.price;
-            document.getElementById('productModalDesc').textContent = p.desc;
-            document.getElementById('productModalFeatures').innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
-            document.getElementById('productModalBtn').innerHTML = `<button class="btn btn-primary" style="width:100%;" onclick="addToCart('${p.cartId}', ${p.cartPrice}); closeModal('product'); showToast('Added to cart ✓')">Add to Cart</button>`;
+
+            // Load images — filter out ones that don't exist gracefully
+            _galleryImages = p.images && p.images.length ? p.images : [p.image];
+            _galleryIndex  = 0;
+            renderGalleryImage();
+
+            // Show/hide arrows & dots
+            const hasMult = _galleryImages.length > 1;
+            document.getElementById('galleryPrev').style.display = hasMult ? 'flex' : 'none';
+            document.getElementById('galleryNext').style.display = hasMult ? 'flex' : 'none';
+            const dots = document.getElementById('galleryDots');
+            dots.innerHTML = hasMult
+                ? _galleryImages.map((_, i) => `<span onclick="galleryGoTo(${i})" style="width:8px;height:8px;border-radius:50%;background:${i===0?'#fff':'rgba(255,255,255,0.5)'};cursor:pointer;display:inline-block;transition:background 0.2s;"></span>`).join('')
+                : '';
+
+            document.getElementById('productModalBadge').textContent   = p.badge;
+            document.getElementById('productModalName').textContent     = p.name;
+            document.getElementById('productModalPrice').textContent    = p.price;
+            document.getElementById('productModalDesc').textContent     = p.desc;
+            document.getElementById('productModalFeatures').innerHTML   = p.features.map(f => `<li>${f}</li>`).join('');
+            document.getElementById('productModalBtn').innerHTML        = `<button class="btn btn-primary" style="width:100%;" onclick="addToCart('${p.cartId}', ${p.cartPrice}); closeModal('product'); showToast('Added to cart ✓')">Add to Cart</button>`;
             openModal('product');
+        }
+
+        function renderGalleryImage() {
+            const img = document.getElementById('productModalImage');
+            img.src = _galleryImages[_galleryIndex];
+            // Update dot highlights
+            const dots = document.getElementById('galleryDots').children;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].style.background = i === _galleryIndex ? '#fff' : 'rgba(255,255,255,0.5)';
+            }
+        }
+
+        function galleryNav(dir) {
+            _galleryIndex = (_galleryIndex + dir + _galleryImages.length) % _galleryImages.length;
+            renderGalleryImage();
+        }
+
+        function galleryGoTo(idx) {
+            _galleryIndex = idx;
+            renderGalleryImage();
         }
 
         const BUSINESS_PHONE = '919490630614';
         let cart = JSON.parse(localStorage.getItem('gautatva_cart') || '[]');
+
+        function generateOrderId() {
+            const now = new Date();
+            const date = now.toISOString().slice(2,10).replace(/-/g,''); // YYMMDD
+            const rand = Math.floor(1000 + Math.random() * 9000);
+            return `GT-${date}-${rand}`;
+        }
 
         // ---- CART UI ----
         function updateCartUI() {
@@ -1145,7 +1198,9 @@
 
         function handleWhatsAppDirect() {
             if (!validateForm()) return;
-            let msg = `🛍️ *Order — Gau Tatva Natural*\n\n`;
+            const orderId = generateOrderId();
+            let msg = `🛍️ *New Order — Gau Tatva Natural*\n`;
+            msg += `🔖 *Order ID: ${orderId}*\n\n`;
             cart.forEach(i => {
                 const lineTotal = `₹${i.price * i.qty}`;
                 msg += `• ${i.name} x${i.qty} = ${lineTotal}\n`;
@@ -1156,8 +1211,18 @@
             msg += `${document.getElementById('fullName').value}\n`;
             msg += `${document.getElementById('street').value}\n`;
             msg += `${document.getElementById('city').value} – ${document.getElementById('pincode').value}\n`;
-            msg += `Ph: ${document.getElementById('phone').value}`;
+            msg += `Ph: ${document.getElementById('phone').value}\n\n`;
+            msg += `_Please confirm this order. Thank you! 🙏_`;
             window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+
+            // Save address for next visit
+            localStorage.setItem('gt_customer', JSON.stringify({
+                fullName: document.getElementById('fullName').value,
+                phone:    document.getElementById('phone').value,
+                street:   document.getElementById('street').value,
+                city:     document.getElementById('city').value,
+                pincode:  document.getElementById('pincode').value
+            }));
 
             // Clear cart
             cart = [];
@@ -1181,10 +1246,10 @@
             `;
         }
 
-        // ---- INPUT FILTERS ----
+        // ---- INPUT FILTERS + ADDRESS AUTO-FILL ----
         document.addEventListener('DOMContentLoaded', () => {
             const onlyLetters = (id) => {
-              const el = document.getElementById(id);
+                const el = document.getElementById(id);
                 if (el) el.addEventListener('input', () => { el.value = el.value.replace(/[^A-Za-z\s]/g, ''); });
             };
             const onlyDigits = (id, max) => {
@@ -1197,7 +1262,35 @@
             onlyLetters('city');
             onlyDigits('phone', 10);
             onlyDigits('pincode', 6);
+
+            // ---- AUTO-FILL SAVED ADDRESS ----
+            const saved = JSON.parse(localStorage.getItem('gt_customer') || 'null');
+            if (saved) {
+                document.getElementById('fullName').value = saved.fullName || '';
+                document.getElementById('phone').value    = saved.phone    || '';
+                document.getElementById('street').value   = saved.street   || '';
+                document.getElementById('city').value     = saved.city     || '';
+                document.getElementById('pincode').value  = saved.pincode  || '';
+
+                // Show "Not you?" clear link below the form
+                const note = document.getElementById('savedAddressNote');
+                if (note) {
+                    note.style.display = 'block';
+                    note.innerHTML = `👋 Welcome back! Your address has been auto-filled. <a href="#" onclick="clearSavedAddress(event)" style="color:#2D4B3D;font-weight:600;">Not you? Clear it.</a>`;
+                }
+            }
         });
+
+        function clearSavedAddress(e) {
+            e.preventDefault();
+            localStorage.removeItem('gt_customer');
+            ['fullName','phone','street','city','pincode'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            const note = document.getElementById('savedAddressNote');
+            if (note) note.style.display = 'none';
+            showToast('Saved address cleared.');
+        }
 
         // ---- INIT ----
         updateCartUI();
